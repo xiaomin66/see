@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*$(function(){
+		$('.modal-content').height($(window).height());
+		//全局的当前选中的栏目的id，在name=categoryId获取，在name=infoCategory设置
+		var currentId='';
+
+		addCategoryId();
+		//新增
+		$('.addBtn').click(function(){
+			$('button[type=reset]').trigger('click');
+		 	$('.messageSpan').html('');
+		 	//查找栏目，追加，设置值
+			addOption(currentId);
+		});
+		//返回
+		$('.backDiv').click(function(){
+			$('#myModal').hide();
+		});
+		//保存
+		$('.saveBtn').click(function(){
+			var infoTitle=$('input[name=infoTitle]').val();
+			var infoCategory=$('select[name=infoCategory]').val();
+			var infoList=$('input[name=infoList]:checked').val();
+			var infoContent=$('textarea[name=infoContent]').val();
+			if(infoTitle&&infoCategory&&infoList&&infoContent){
+					var obj={
+						title:infoTitle,
+						liststyle:infoList,
+						categoryId:infoCategory,
+						content:infoContent,
+					}
+					$.post(baseURL+'/manager/article/saveOrUpdateArticle',obj,function(res){
+						console.log(res);
+						if(res.status==200){
+							alert('保存成功');
+							//新增之后，再查找当前栏目下的数据
+							loadData(currentId);
+							$('#myModal').hide();
+						}else{
+							console.log(res.message,'保存失败');
+							alert('保存失败');
+						}
+					});
+				}else{
+				$('.messageSpan').html('请输入完整信息');
+				}
+
+		});
+		//查找栏目，追加，设置值,显示模态框
+		function addOption(CCId){
+			$('select[name=infoCategory]').empty();
+			$.get(baseURL+'/manager/category/findAllCategory',function(res){
+				res.data.forEach(function(item){
+					var $option=$('<option value="'+item.id+'">'+item.name+'</option>');
+				$('select[name=infoCategory]').append($option);
+			});
+				//新增设置模态框中select的值为全局currentId,修改时或者设置当前文章对象的所属栏目id
+					$('select[name=infoCategory]').val(CCId);
+					$('#myModal').show();
+			});		
+		}
+		//当select categoryId 发生改变时过去对应的栏目的文章信息
+		$('select[name=categoryId]').change(function(){
+			var cId=$(this).val();//this-->select
+			currentId=cId;
+			loadData(cId);
+		});
+		
+		//先获取所有的栏目信息，并且追加节点到select中
+		function addCategoryId(){
+			$('.optionDiv select[name=categoryId]').empty();
+			$.get(baseURL+'/manager/category/findAllCategory',function(res){
+				res.data.forEach(function(item){
+					var $option=$('<option value="'+item.id+'">'+item.name+'</option>');
+					$('.optionDiv select[name=categoryId]').append($option);
+				});
+				currentId=res.data[0].id;
+				loadData($('.optionDiv select[name=categoryId]').val());
+			});
+			}
+		 //通过栏目id加载对应的文章信息
+		 function loadData(categoryId){
+		 	$('#info table tr:not(:first)').remove();
+		 	var obj={
+		 		page:0,
+		 		pageSize:100,
+		 		categoryId:categoryId
+		 	};
+			$.get(baseURL+'/manager/article/findArticle',obj,function(res){
+				if(res.status==200){
+		 			var articles=[];
+		 			if(res.data){
+		 				//res.data.list
+						articles = res.data.list
+		 			}
+		 			articles.forEach(function(item){
+		 				//item 文章信息
+		 				var $tr=$(`	<tr>
+							<td><input type="checkbox" value="`+item.id+`"></td>
+							<td>`+item.title+`</td>
+							<td>`+item.category.name+`</td>	
+							<td>`+item.liststyle+`</td>
+							<td>`+(item.author?item.author:'-')+`</td>
+							<td>`+item.publishtime+`</td>
+							<td>`+item.readtimes+`</td>
+							<td>
+								<i class="iconfont icon-edit-1-copy" title="修改"></i>
+								<i class="iconfont icon-shanchu" title="删除"></i>
+							</td>
+						</tr>`);
+					$('#info table').append($tr);
+		 			});
+		 		}else{
+		 			alert('加载失败')
+		 			console.log(res.message,'------');
+		 		}
+		 	});		
+		 } 
+	});*/
+	</script>
+</body>
+</html>
